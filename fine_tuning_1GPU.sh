@@ -1,7 +1,7 @@
 torchrun --nproc_per_node=2 --master_port=1234 finetune.py \
-    --base_model meta-llama/Llama-2-13b-hf \
+    --base_model meta-llama/Llama-2-7b-chat-hf \ 
     --data-path garage-bAInd/Open-Platypus \
-    --output_dir ./llama2-platypus-13b \
+    --output_dir ./llama2-platypus-7b \
     --batch_size 16 \
     --micro_batch_size 1 \
     --num_epochs 1 \
