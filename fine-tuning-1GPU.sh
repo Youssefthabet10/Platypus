@@ -1,4 +1,4 @@
-torchrun --nproc_per_node=2 --master_port=1234 finetune.py \
+torchrun --nproc_per_node=1 --master_port=1234 finetune.py \
     --base_model meta-llama/Llama-2-7b-chat-hf \ 
     --data-path garage-bAInd/Open-Platypus \
     --output_dir ./llama2-platypus-7b \
