@@ -297,8 +297,20 @@ def train(
 
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
+    def checkpoint_exists(directory):
+        # Here we're checking for the existence of the 'pytorch_model.bin' file as an indicator.
+        # Depending on the structure of your checkpoints, you might want to check for other files or configurations.
+        checkpoint_file_path = os.path.join(directory, 'pytorch_model.bin')
+        return os.path.isfile(checkpoint_file_path)
+    checkpoint_directory = "/kaggle/working/llama2-platypus-13b"
 
-    trainer.train(resume_from_checkpoint=resume_from_checkpoint)
+    if checkpoint_exists(checkpoint_directory):
+        trainer.train(resume_from_checkpoint=checkpoint_directory)
+    else:
+        print("No valid checkpoint found. Training from the beginning...")
+        trainer.train()
+        
+#    trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
     model.save_pretrained(output_dir)
     # model.base_model.save_pretrained(output_dir)
