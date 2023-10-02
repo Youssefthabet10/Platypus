@@ -299,7 +299,7 @@ def train(
         model = torch.compile(model)
 
   #  trainer.train(resume_from_checkpoint=resume_from_checkpoint)
-    trainer.train()
+    trainer.train(resume_from_checkpoint = True)
 
     model.save_pretrained(output_dir)
     # model.base_model.save_pretrained(output_dir)
