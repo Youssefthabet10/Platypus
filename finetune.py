@@ -302,7 +302,7 @@ def train(
         # Depending on the structure of your checkpoints, you might want to check for other files or configurations.
         checkpoint_file_path = os.path.join(directory, 'pytorch_model.bin')
         return os.path.isfile(checkpoint_file_path)
-    checkpoint_directory = "/kaggle/working/llama2-platypus-13b"
+    checkpoint_directory = "/kaggle/working/Speechless-Llama2-Hermes-Orca-Platypus-WizardLM-13B-GGUF"
 
     if checkpoint_exists(checkpoint_directory):
         trainer.train(resume_from_checkpoint=checkpoint_directory)
